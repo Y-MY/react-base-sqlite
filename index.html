@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TITLE</title>
+    <script src="./assets/js/fastclick-1.0.6.js"></script>
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function () {
+                FastClick.attach(document.body);
+            }, false);
+        }
+        if (!window.Promise) {
+            document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"' + '>' + '<' + '/' + 'script>');
+        }
+        //引入百度地图api
+        window.BMap_loadScriptTime = (new Date).getTime();
+        document.write('<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=hx803m9RTVcOy6DQ67yf51z8bKRV71fC&services=&t=20200327103013&s=1"' + '>' + '<' + '/' + 'script>')
+       //获取hbuilder打包后的版本号
+        document.addEventListener('plusready', function () {
+            plus.runtime.getProperty(plus.runtime.appid, function (wgtinfo) {
+                //appid属性
+                window.myVersion = wgtinfo.version;//添加全局属性
+                var pinf = plus.push.getClientInfo();
+                window.deviceId = pinf.clientid;
+                window.deviceType = plus.os.name;
+            });
+        })
+
+        function showInfo(pathname) {
+          //  console.log('jianlai')
+            //console.log(pathname)
+            window.location.href =pathname;
+        }
+    </script>
+    <script type="text/javascript">
+        //手机端的适配
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementsByTagName("html")[0].style.fontSize = (document.documentElement.clientWidth / 414) * 100 + "px";
+        });
+
+        //iframe android全屏
+        document.addEventListener('webkitfullscreenchange', function() {
+            var el = document.webkitFullscreenElement; //获取全屏元素
+            if(el) {
+                plus.screen.lockOrientation('landscape'); //锁死屏幕方向为横屏
+            } else {
+                plus.screen.unlockOrientation(); //解除屏幕方向的锁定
+            }
+        });
+
+       /* var videoElem = document.querySelector('video'); //video元素
+        // video元素开始全屏
+        videoElem.addEventListener('webkitbeginfullscreen', function() {//目的是监听video的全屏事件，改变手机的横竖屏
+            plus.screen.lockOrientation('landscape');
+        });
+        // video元素全屏结束
+        videoElem.addEventListener('webkitendfullscreen', function() {
+            plus.screen.lockOrientation('portrait');
+        });*/
+
+        window.onresize = function () {
+            document.getElementsByTagName("html")[0].style.fontSize = (document.documentElement.clientWidth / 414) * 100 + "px";
+        }
+    </script>
+</head>
+<body>
+<div id="app" style="height:100%;">
+</div>
+<script src="./assets/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="./assets/js/index.js"></script>
+<script type="text/javascript" src="./assets/js/appback.js"></script>
+</body>
+</html>

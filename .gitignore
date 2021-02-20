@@ -1,0 +1,9 @@
+node_modules/
+dist/
+npm-debug.log
+.idea/
+.vsCode/
+/.idea/workspace.xml
+*.rar
+webpack.dev.config.js
+/app/config/index.js
