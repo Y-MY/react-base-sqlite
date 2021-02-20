@@ -5,5 +5,5 @@ npm-debug.log
 .vsCode/
 /.idea/workspace.xml
 *.rar
-webpack.dev.config.js
-/app/config/index.js
+#webpack.dev.config.js
+#/app/config/index.js
